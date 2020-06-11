@@ -83,10 +83,11 @@ For example removeLastFlavor(originalFlavors) would return ["Rainbow Sherbert", 
 
 function removeLastFlavor(arr){
 
-    arr.pop(originalFlavors);
-    console.log(arr)
+    return arr.pop();
+    
 }
 removeLastFlavor(originalFlavors);
+console.log(originalFlavors);
 /* Task 4: Write a function that returns a flavor at a given index in the array.
 
 Your function should accept:
@@ -97,9 +98,9 @@ Your function should accept:
 For example, getFlavorByIndex(originalFlavors, 2) would return "Black Walnut", assuming Rainbow Sherbert has been added successfully. */
 
 function getFlavorByIndex(arr, position){
-    console.log(arr[position]);
+    return arr[position];
 }
-getFlavorByIndex(originalFlavors, 2);
+console.log(getFlavorByIndex(originalFlavors, 2));
 
 /* Task 5: As corporate wants to add more and more flavors to their lineup, they've realized that they need to remove flavors based on flavor name, as opposed to just arbitrarily removing the first or last flavor. Your task is to get an index by flavor name, and remove that flavor from the array. 
 
@@ -120,9 +121,9 @@ function removeFlavorByName(arr, flav){
         arr.splice(i, 1);
       }     
     }
-    console.log(arr)
+    return arr
    }
-   removeFlavorByName(originalFlavors, "Vanilla" )
+   console.log(removeFlavorByName(originalFlavors, "Coffee" ))
 
 /* Task 6: With all of these changes going on, we don't want to lose track of the actual, original 31 flavors. Write a function called copy that makes a copy of the array. 
 
@@ -132,11 +133,9 @@ Your function should accept:
 
 and should return a new array that is identical to the old array. You can name the new array however you'd like. */
 
-function copy([...originalFlavors], newArr){
-    newArr = [];
-    for(let i=0; i < originalFlavors.length; i++){
-    newArr.push(originalFlavors[i]);
-    }
+function copy(originalFlavors, newArr){
+    newArr = [...originalFlavors];
+    
     return newArr;
  }
  console.log(copy(originalFlavors, 'favFlavors'))
@@ -184,13 +183,13 @@ and should return the average number of words per item in the array.
 For example, getAverageWordLength(originalFlavors) should return a number between 0 and 3. */
 
 function getAverageWordLength(arr){
-    sum= arr[i].length/arr.length
+   let sum = 0;
     for( let i=0; i<arr.length; i++){
-        return sum;
+       sum = sum + arr[i].split('').length;
     }
-return sum
+return sum/arr.length;
 }
-
+console.log(getAverageWordLength(originalFlavors))
 
 /* STRETCH 2: Baskin Robins now offers new flavors, seasonal flavors, and even regional flavors. Write a function that will randomly select a total of 31 flavors from originalFlavors, currentFlavors, seasonalFlavors, and regionalFlavors.
 
@@ -273,8 +272,13 @@ var regionalFlavors = ["Pink Bubblegum",
     "Chocolate Chocolate Chip Cheesecake",
     "Caramel 'n' Cookies"]
 
-function getRandomFlavors(/*code here*/){
-
-    /*code here*/
-
+function getRandomFlavors(arr, arr2, arr3, arr4){
+    
+    randomFlavors = []
+    for(let i=0; i<8; i++){
+        randomFlavors.push(arr[i], arr2[i], arr3[i], arr4[i]);
+        
+    }
+return randomFlavors
 }
+console.log(getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors));
